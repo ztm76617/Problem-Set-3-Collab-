@@ -1,5 +1,5 @@
 ---
-title: Measuring the Relationship Between National Economies and Confidence in Economic
+title: Measuring the Relationship Between National Economies and Confidence in Economic Institutions
 #date: "`r Sys.Date()`"
 authors:
   - name: Author Bruno Guimaraes Ubiali
@@ -19,6 +19,7 @@ keywords:
   - OECD
   - Economics
   - Development
+  - IMF
 #fontsize: 12pt
 #spacing: halfline # could also be oneline
 #classoptions:
@@ -40,7 +41,7 @@ knitr::opts_chunk$set(fig.env="figure") # Latex figure environment
 
 # Introduction
 
-This template is based on the generic OUP template available [here](https://academic.oup.com/icesjms/pages/General_Instructions). The original OUP sample tex document, providing more details on prefered formatting for LaTeX documents, is included with the template in the file `ouparticle_sample.tex`.
+This template is based on the generic OUP template available (https://academic.oup.com/icesjms/pages/General_Instructions). The original OUP sample tex document, providing more details on prefered formatting for LaTeX documents, is included with the template in the file `ouparticle_sample.tex`.
 
 Here are two sample references: @Feynman1963118 [@Dirac1953888]. Bibliography will appear at the end of the document.
 
