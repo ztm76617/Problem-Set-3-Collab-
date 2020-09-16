@@ -126,4 +126,16 @@ fig6
 
 cowplot::plot_grid(fig4, fig5, fig6) + theme_minimal()
 
+# Loading OECD data
+OECD_GDP_per_capita_US_Chile_Mexico_ <- read_csv("data/OECD GDP per capita (US, Chile, Mexico).csv")
+
+# Renaming OECD data file
+OECD.df <- OECD_GDP_per_capita_US_Chile_Mexico_
+names(OECD.df)
+
+fig7 <- ggplot(data = OECD.df) + 
+  geom_col(mapping = aes(x = LOCATION, y = VALUE)) +
+  labs(title = "OECD Countries GDP per capita", x = "Countries", y = "USD (Thousands)")
+
+fig7
 
