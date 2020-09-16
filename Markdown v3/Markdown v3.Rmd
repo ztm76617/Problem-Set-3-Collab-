@@ -49,7 +49,7 @@ For our research purposes, we decided to examine the various responses found in 
 
 Cross referencing the World Values Survey data with the data gathered by the OECD, we established that Chile and Mexico were the two countries that fulfilled the needs of the study; they countries ranked near the bottom of the OECD in terms of GDP per capita and gave responses to the survey questions that were chosen to measure economic attitudes.
 
-On the other side of the spectrum, the United States (U.S.) was the highest ranking country in the OECD that also responded to the aforementioned questions that were picked for our research purposes. Additionally, the U.S. is a uniquely well situated country to serve as the foil for Chile and Mexico, due to the the U.S. having one of the largest national economies in the world (NEED CITE). Subsequently, it will be interesting to see how the two poorer countries (Chile and Mexico) compare to the U.S., with the assumption that people associate financial and economic insititutions with economic outcomes and conditions. 
+On the other side of the spectrum, the United States (U.S.) was the highest ranking country in the OECD that also responded to the aforementioned questions that were picked for our research purposes. Additionally, the U.S. is a uniquely well situated country to serve as the foil for Chile and Mexico, due to the the U.S. having one of the largest national economies in the world (NEED CITE). Subsequently, it will be interesting to see how the two poorer countries (Chile and Mexico) compare to the U.S., with the assumption that people associate financial and economic insititutions with economic outcomes and conditions (POSSIBLE CITE NEEDED).
 
 An equation with a label for cross-referencing:
 
@@ -61,13 +61,12 @@ An equation with a label for cross-referencing:
 
 This equation can be referenced as follows: Eq. \ref{eq:eq1}
 
-## A subsection
+## Hypotheses
 
 A numbered list:
 
-1) First point
-2) Second point
-    - Subpoint
+1) People that live in lower GDP per capita countries will harbor negative attitudes towards various financial and/or economic institutions.
+2) SPeople that live in higher GPD per capita countries will harbor positive attitudes towards various financial and/or economic institutions.
     
 A bullet list:
 
