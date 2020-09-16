@@ -31,31 +31,37 @@ ggplot(data = united.states.df) +
 ggplot(data = chile.df) +
   geom_bar(mapping = aes(x=Q270))
 
+# US IMF confidence
 united.states.imf <- (united.states.df$Q84)
-chile.imf <- (chile.df$Q84)
-mexico.imf <- (mexico.df$Q84)
 
-  
-united.states.imf[united.states.imf == 1] <- '0'
-united.states.imf[united.states.imf == 2] <- '1'
+# Renaming US IMF variables
+united.states.imf[united.states.imf == 1] <- '4'
+united.states.imf[united.states.imf == 2] <- '3'
 united.states.imf[united.states.imf == 3] <- '2'
-united.states.imf[united.states.imf == 4] <- '3'
+united.states.imf[united.states.imf == 4] <- '1'
 
 fig1 <- ggplot(data = united.states.df) + 
   geom_bar(mapping = aes(x = united.states.imf)) +
-  labs(title = "United States", x = "Confidence in IMF")
+  labs(title = "United States", x = "Confidence in IMF", y = "Frequency")
+fig1
 
-# Re-labling chile variables 
-chile.imf[chile.imf == 1] <- '0'
-chile.imf[chile.imf == 2] <- '1'
+# Chile IMF confidence
+chile.imf <- (chile.df$Q84)
+
+# Re-labling chile IMF variables 
+chile.imf[chile.imf == 1] <- '4'
+chile.imf[chile.imf == 2] <- '3'
 chile.imf[chile.imf == 3] <- '2'
-chile.imf[chile.imf == 4] <- '3'
+chile.imf[chile.imf == 4] <- '1'
 
 
 fig2 <- ggplot(data = chile.df) + 
   geom_bar(mapping = aes(x = chile.imf)) +
-  labs(title = "Chile", x = "Confidence in IMF")
+  labs(title = "Chile", x = "Confidence in IMF", y = "Frequency")
 fig2
+
+# Mexico IMF confideence
+mexico.imf <- (mexico.df$Q84)
 
 # Re-labling mexico variables 
 mexico.imf[mexico.imf == 1] <- '4'
@@ -65,7 +71,7 @@ mexico.imf[mexico.imf == 4] <- '1'
 
 fig3 <- ggplot(data = mexico.df) + 
   geom_bar(mapping = aes(x = mexico.imf)) +
-  labs(title = "Mexico", x = "Confidence in IMF")
+  labs(title = "Mexico", x = "Confidence in IMF", y = "Frequency") 
 
 fig3
 
