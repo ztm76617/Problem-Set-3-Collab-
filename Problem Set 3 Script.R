@@ -76,3 +76,54 @@ fig3 <- ggplot(data = mexico.df) +
 fig3
 
 cowplot::plot_grid(fig1, fig2, fig3)
+
+# US confidence in banks
+united.states.banks <- (united.states.df$Q78)
+
+# Renaming US bank variables
+united.states.banks[united.states.banks == 1] <- '4'
+united.states.banks[united.states.banks == 2] <- '3'
+united.states.banks[united.states.banks == 3] <- '2'
+united.states.banks[united.states.banks == 4] <- '1'
+
+# US bank ggplot
+fig4 <- ggplot(data = united.states.df) + 
+  geom_bar(mapping = aes(x = united.states.banks)) +
+  labs(title = "United States", x = "Confidence in Banks", y = "Frequency")
+fig4
+
+# Chile confidence in banks
+chile.banks <- (chile.df$Q78)
+
+# Renaming Chile bank variables
+chile.banks[chile.banks == 1] <- '4'
+chile.banks[chile.banks == 2] <- '3'
+chile.banks[chile.banks == 3] <- '2'
+chile.banks[chile.banks == 4] <- '1'
+
+# Chile bank ggplot
+fig5 <- ggplot(data = chile.df) + 
+  geom_bar(mapping = aes(x = chile.banks)) +
+  labs(title = "Chile", x = "Confidence in Banks", y = "Frequency")
+fig5
+
+
+# Mexico bank confidence
+mexico.banks <- (mexico.df$Q78)
+
+# Mexico renamed bank variables
+mexico.banks[mexico.banks == 1] <- '4'
+mexico.banks[mexico.banks == 2] <- '3'
+mexico.banks[mexico.banks == 3] <- '2'
+mexico.banks[mexico.banks == 4] <- '1'
+
+# Mexico bank ggplot
+fig6 <- ggplot(data = mexico.df) + 
+  geom_bar(mapping = aes(x = mexico.banks)) +
+  labs(title = "Mexico", x = "Confidence in Banks", y = "Frequency") 
+fig6
+
+
+cowplot::plot_grid(fig4, fig5, fig6)
+
+
