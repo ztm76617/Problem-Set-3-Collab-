@@ -49,7 +49,12 @@ For our research purposes, we decided to examine the various responses found in 
 
 Cross referencing the World Values Survey data with the data gathered by the OECD, we established that Chile and Mexico were the two countries that fulfilled the needs of the study; they countries ranked near the bottom of the OECD in terms of GDP per capita and gave responses to the survey questions that were chosen to measure economic attitudes.
 
-On the other side of the spectrum, the United States (U.S.) was the highest ranking country in the OECD that also responded to the aforementioned questions that were picked for our research purposes. Additionally, the U.S. is a uniquely well situated country to serve as the foil for Chile and Mexico, due to the the U.S. having one of the largest national economies in the world (NEED CITE). Subsequently, it will be interesting to see how the two poorer countries (Chile and Mexico) compare to the U.S., with the assumption that people associate financial and economic insititutions with economic outcomes and conditions (POSSIBLE CITE NEEDED).
+On the other side of the spectrum, the United States (U.S.) was the highest ranking country in the OECD that also responded to the aforementioned questions that were picked for this paper. Additionally, the U.S. is a uniquely well situated country to serve as the foil for Chile and Mexico, due to the the U.S. having one of the largest national economies in the world (NEED CITE). Subsequently, it will be interesting to see how the two poorer countries (Chile and Mexico) compare to the U.S., with the assumption that people associate financial and economic insititutions with economic outcomes and conditions (POSSIBLE CITE NEEDED).
+
+```fig7 <- ggplot(data = OECD.df) + 
+  geom_col(mapping = aes(x = LOCATION, y = VALUE)) +
+  labs(title = "OECD Countries GDP per capita", x = "Countries", y = "USD (Thousands)") +
+  theme_gray()
 
 An equation with a label for cross-referencing:
 
@@ -67,18 +72,16 @@ A numbered list:
 
 1) People that live in lower GDP per capita countries will harbor negative attitudes towards various financial and/or economic institutions.
 2) SPeople that live in higher GPD per capita countries will harbor positive attitudes towards various financial and/or economic institutions.
-    
-A bullet list:
-
-* First point
-* Second point
 
 # Results
 
 ## Generate a figure.
 
-```{r fig1, fig.cap="This is the first figure.",echo=TRUE}
-plot(1:10,main="Some data",xlab="Distance (cm)",ylab="Time (hours)")
+```{r OECD Countries}
+ggplot(data = OECD.df) + 
+  geom_col(mapping = aes(x = LOCATION, y = VALUE)) +
+  labs(title = "OECD Countries GDP per capita", x = "Countries", y = "USD (Thousands)")
+
 ```
 
 You can reference this figure as follows: Fig. \ref{fig:fig1}.
@@ -89,15 +92,6 @@ plot(1:5,pch=19,main="Some data",xlab="Distance (cm)",ylab="Time (hours)")
 
 Reference to second figure: Fig. \ref{fig:fig2}
 
-## Generate a table using `xtable`
-
-```{r tab1, results="asis", echo=TRUE}
-df = data.frame(ID=1:3,code=letters[1:3])
-
-# Creates tables that follow OUP guidelines using xtable
-library(xtable) 
-print(xtable(df,caption="This is the table caption",label="tab:tab1"),
-      comment=FALSE)
 ```
 
 You can reference this table as follows: Table \ref{tab:tab1}.
