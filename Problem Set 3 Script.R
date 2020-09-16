@@ -124,6 +124,6 @@ fig6 <- ggplot(data = mexico.df) +
 fig6
 
 
-cowplot::plot_grid(fig4, fig5, fig6)
+cowplot::plot_grid(fig4, fig5, fig6) + theme_minimal()
 
 
