@@ -1,0 +1,16 @@
+Dear Zach and Bruno,
+
+A valiant effort! It is clear you tried a bunch of things and couldn't quite get the Rmd working. But you do have an R script producing output, so I call it a win.
+
+For Problem Set 4, try taking that R script and pasting it into code chunks in an Rmd file. Don't worry about setting up a fancy template; just use the default. If you can knit it, you're in business.
+
+Once you've done that, take some time to build up your confidence with R syntax. A few things you could try:
+
+- Go through my first week slides and try typing all of those commands into an .R script.
+- Make sure you understand what an object is, and how functions work. Play with them. Try creating a bunch of objects and applying functions to them, like length(), unique(), mean(), sd(), and table().
+- Retype a bunch of commands that require parentheses and quotation marks. A common struggle when first learning R is knowing where to start and end those characters, but it gets easier with practice.
+
+Let me know if Spencer or I can help with any of those steps!
+
+Take care,
+Joe
