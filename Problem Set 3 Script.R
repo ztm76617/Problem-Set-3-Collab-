@@ -3,15 +3,11 @@ load("data/World_Values_Survey_Wave_7_Sample.RData")
 names(wvs)
 
 # Install + load all packages
-install.packages("tidyverse")
 library(tidyverse)
-
-install.packages("ggplot2")
 library(ggplot2)
-
-install.packages("cowplot")
 library(cowplot)
 
+# Hey Zach check out line 40 for an example of the sort of pipe-based code we discussed! (JO)
 
 
 # Name Countries subsets
@@ -39,6 +35,19 @@ united.states.imf[united.states.imf == 1] <- '4'
 united.states.imf[united.states.imf == 2] <- '3'
 united.states.imf[united.states.imf == 3] <- '2'
 united.states.imf[united.states.imf == 4] <- '1'
+
+
+fig1 <- wvs %>% 
+  filter(B_COUNTRY_ALPHA == 'USA') %>%  # keep USA
+  mutate(IMF = case_when(Q84 == 1 ~ 4, # recode Q84 as "IMF"
+                         Q84 == 2 ~ 3,
+                         Q84 == 3 ~ 2,
+                         Q84 == 4 ~ 1)) %>% 
+  ggplot +
+  geom_bar(mapping = aes(x = IMF)) +
+  labs(title = "United States", x = "Confidence in IMF", y = "Frequency")  
+  
+fig1
 
 fig1 <- ggplot(data = united.states.df) + 
   geom_bar(mapping = aes(x = united.states.imf)) +
