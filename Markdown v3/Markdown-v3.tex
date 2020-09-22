@@ -92,17 +92,58 @@ It consists of two paragraphs.}
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-This template is based on the generic OUP template available
-\href{https://academic.oup.com/icesjms/pages/General_Instructions}{here}.
-The original OUP sample tex document, providing more details on prefered
-formatting for LaTeX documents, is included with the template in the
-file \texttt{ouparticle\_sample.tex}.
-
-Here are two sample references: Feynman and Vernon Jr. (1963; Dirac
-1953). Bibliography will appear at the end of the document.
+People's opinions on economic institutions can vary according to the
+level of development of their countries of residence. This has
+implications for trust in economic policies, which can in turn influence
+levels of investment in national and international markets. Based on
+this, we hypothesized that people who reside in developed countries have
+a higher level of trust in economic institutions than people who reside
+in developing countries. This paper aims at testing this hypothesis,
+drawing on the World Values Survey (WVS), which takes a global approach
+to inquiry people about their cultural values as well as attitudes and
+perceptions regarding multilateral institutions, economy, education,
+health, among many others (ref). We used specifically the question of
+confidence at the International Monetary Fund (IMF), and institution
+created in the United States in the 1940s with the main objective of
+promoting international financial stability and economic cooperation
+(ref). We purposefully selected answers from three countries that
+reflect a range of development levels in the Americas: United States,
+Mexico, and Chile.
 
 \hypertarget{materials-and-methods}{%
-\section{Materials and methods}\label{materials-and-methods}}
+\section{Materials and Methods}\label{materials-and-methods}}
+
+For our research purposes, we decided to examine the various responses
+found in the World Values Survey Wave 7 (2017-2020). Originally, the
+goal was to compare the results from the top three and bottom three
+countries in the Organization for Economic Co-operation and Development
+(OECD) concerning GDP per capita. Unfortunately, some of the countries
+that ranked at or near the top of the OECD list did not record responses
+for the survey questions that were selected to measure economic
+attitudes (Luxembourg, Ireland, Norway, Switzerland). As a result, our
+study limits its analysis to the following three countries: Chile,
+Mexico, and the United States.
+
+Cross referencing the World Values Survey data with the data gathered by
+the OECD, we established that Chile and Mexico were the two countries
+that fulfilled the needs of the study; they countries ranked near the
+bottom of the OECD in terms of GDP per capita and gave responses to the
+survey questions that were chosen to measure economic attitudes.
+
+On the other side of the spectrum, the United States (U.S.) was the
+highest ranking country in the OECD that also responded to the
+aforementioned questions that were picked for this paper. Additionally,
+the U.S. is a uniquely well situated country to serve as the foil for
+Chile and Mexico, due to the the U.S. having one of the largest national
+economies in the world (NEED CITE). Subsequently, it will be interesting
+to see how the two poorer countries (Chile and Mexico) compare to the
+U.S., with the assumption that people associate financial and economic
+insititutions with economic outcomes and conditions (POSSIBLE CITE
+NEEDED).
+
+```fig7 \textless- ggplot(data = OECD.df) + geom\_col(mapping = aes(x =
+LOCATION, y = VALUE)) + labs(title = ``OECD Countries GDP per capita'',
+x = ``Countries'', y = ``USD (Thousands)'') + theme\_gray()
 
 An equation with a label for cross-referencing:
 
@@ -114,8 +155,8 @@ An equation with a label for cross-referencing:
 
 This equation can be referenced as follows: Eq. \ref{eq:eq1}
 
-\hypertarget{a-subsection}{%
-\subsection{A subsection}\label{a-subsection}}
+\hypertarget{hypotheses}{%
+\subsection{Hypotheses}\label{hypotheses}}
 
 A numbered list:
 
@@ -123,26 +164,14 @@ A numbered list:
 \def\labelenumi{\arabic{enumi})}
 \tightlist
 \item
-  First point
+  People that live in lower GDP per capita countries will harbor
+  negative attitudes towards various financial and/or economic
+  institutions.
 \item
-  Second point
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Subpoint
-  \end{itemize}
+  SPeople that live in higher GPD per capita countries will harbor
+  positive attitudes towards various financial and/or economic
+  institutions.
 \end{enumerate}
-
-A bullet list:
-
-\begin{itemize}
-\tightlist
-\item
-  First point
-\item
-  Second point
-\end{itemize}
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -150,15 +179,12 @@ A bullet list:
 \hypertarget{generate-a-figure.}{%
 \subsection{Generate a figure.}\label{generate-a-figure.}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{plot}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DataTypeTok{main=}\StringTok{"Some data"}\NormalTok{,}\DataTypeTok{xlab=}\StringTok{"Distance (cm)"}\NormalTok{,}\DataTypeTok{ylab=}\StringTok{"Time (hours)"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}[p]
-\includegraphics[width=1\linewidth]{Markdown-v3_files/figure-latex/fig1-1} \caption{This is the first figure.}\label{fig:fig1}
-\end{figure}
+\begin{verbatim}
+ggplot(data = OECD.df) + 
+  geom_col(mapping = aes(x = LOCATION, y = VALUE)) +
+  labs(title = "OECD Countries GDP per capita", x = "Countries", y = "USD (Thousands)") +
+  theme_gray()
+\end{verbatim}
 
 You can reference this figure as follows: Fig. \ref{fig:fig1}.
 
@@ -174,51 +200,20 @@ You can reference this figure as follows: Fig. \ref{fig:fig1}.
 
 Reference to second figure: Fig. \ref{fig:fig2}
 
-\hypertarget{generate-a-table-using-xtable}{%
-\subsection{\texorpdfstring{Generate a table using
-\texttt{xtable}}{Generate a table using xtable}}\label{generate-a-table-using-xtable}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{ID=}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{,}\DataTypeTok{code=}\NormalTok{letters[}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{])}
-
-\CommentTok{# Creates tables that follow OUP guidelines using xtable}
-\KeywordTok{library}\NormalTok{(xtable) }
-\KeywordTok{print}\NormalTok{(}\KeywordTok{xtable}\NormalTok{(df,}\DataTypeTok{caption=}\StringTok{"This is the table caption"}\NormalTok{,}\DataTypeTok{label=}\StringTok{"tab:tab1"}\NormalTok{),}
-      \DataTypeTok{comment=}\OtherTok{FALSE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{table}[ht]
-\centering
-\begin{tabular}{rrl}
-  \hline
- & ID & code \\ 
-  \hline
-1 &   1 & a \\ 
-  2 &   2 & b \\ 
-  3 &   3 & c \\ 
-   \hline
-\end{tabular}
-\caption{This is the table caption} 
-\label{tab:tab1}
-\end{table}
+\begin{verbatim}
 
 You can reference this table as follows: Table \ref{tab:tab1}.
 
-\hypertarget{generate-a-table-using-kable}{%
-\subsection{\texorpdfstring{Generate a table using
-\texttt{kable}}{Generate a table using kable}}\label{generate-a-table-using-kable}}
+## Generate a table using `kable`
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{ID=}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{,}\DataTypeTok{code=}\NormalTok{letters[}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{])}
 
-\CommentTok{# kable can alse be used for creating tables}
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(df,}\DataTypeTok{caption=}\StringTok{"This is the table caption"}\NormalTok{,}\DataTypeTok{format=}\StringTok{"latex"}\NormalTok{,}
-             \DataTypeTok{booktabs=}\OtherTok{TRUE}\NormalTok{,}\DataTypeTok{label=}\StringTok{"tab2"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+```r
+df = data.frame(ID=1:3,code=letters[1:3])
+
+# kable can alse be used for creating tables
+knitr::kable(df,caption="This is the table caption",format="latex",
+             booktabs=TRUE,label="tab2")
+\end{verbatim}
 
 \begin{table}
 
@@ -247,20 +242,7 @@ You can cross-reference sections and subsections as follows: Section
 the section title for the bibliography.
 
 \hypertarget{references}{%
-\section*{References}\label{references}}
-\addcontentsline{toc}{section}{References}
-
-\hypertarget{refs}{}
-\leavevmode\hypertarget{ref-Dirac1953888}{}%
-Dirac, P. A. M. 1953. ``The Lorentz Transformation and Absolute Time.''
-\emph{Physica} 19 (1-\/--12): 888--96.
-\url{https://doi.org/10.1016/S0031-8914(53)80099-6}.
-
-\leavevmode\hypertarget{ref-Feynman1963118}{}%
-Feynman, R. P, and F. L Vernon Jr. 1963. ``The Theory of a General
-Quantum System Interacting with a Linear Dissipative System.''
-\emph{Annals of Physics} 24: 118--73.
-\url{https://doi.org/10.1016/0003-4916(63)90068-X}.
+\section{References}\label{references}}
 
 
 \begin{notes}[Acknowledgements]
