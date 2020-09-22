@@ -12,8 +12,6 @@ library(ggplot2)
 install.packages("cowplot")
 library(cowplot)
 
-
-
 # Name Countries subsets
 united.states.df <- subset(wvs, B_COUNTRY == "840")
 chile.df <- subset(wvs, B_COUNTRY == "152")
@@ -132,10 +130,11 @@ OECD_GDP_per_capita_US_Chile_Mexico_ <- read_csv("data/OECD GDP per capita (US, 
 # Renaming OECD data file
 OECD.df <- OECD_GDP_per_capita_US_Chile_Mexico_
 names(OECD.df)
-
+# OECD ggplot
 fig7 <- ggplot(data = OECD.df) + 
   geom_col(mapping = aes(x = LOCATION, y = VALUE)) +
-  labs(title = "OECD Countries GDP per capita", x = "Countries", y = "USD (Thousands)")
+  labs(title = "OECD Countries GDP per capita", x = "Countries", y = "USD (Thousands)") +
+  theme_gray()
 
 fig7
 
