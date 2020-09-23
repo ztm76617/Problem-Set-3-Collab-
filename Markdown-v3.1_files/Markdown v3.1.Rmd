@@ -38,9 +38,8 @@ knitr::opts_chunk$set(fig.env="figure") # Latex figure environment
 
 ```{r}
 library(tidyverse)
-library(knitr)
-library(ggplot2)
-library(dplyr)
+library(rticles)
+library(shiny)
 ```
 
 # Introduction
@@ -56,9 +55,14 @@ Cross referencing the World Values Survey data with the data gathered by the OEC
 On the other side of the spectrum, the United States (U.S.) was the highest ranking country in the OECD that also responded to the aforementioned questions that were picked for this paper. Additionally, the U.S. is a uniquely well situated country to serve as the foil for Chile and Mexico, due to the the U.S. having one of the largest national economies in the world (NEED CITE). Subsequently, it will be interesting to see how the two poorer countries (Chile and Mexico) compare to the U.S., with the assumption that people associate financial and economic institutions with economic outcomes and conditions (POSSIBLE CITE NEEDED).
 
 
-```{r, echo=TRUE}
+```{r}
 
-load(wvs)
+load('data/World_Values_Survey_Wave_7_Sample.RData')
+
+# Renaming columns
+wvs <- wvs %>% rename('confidence.imf' = Q84)
+wvs <- wvs %>% rename('confidence.banks' = Q78)
+wvs <- wvs %>% rename('occ.group' = Q281)
 
 comb.hist <- wvs %>%
   select(B_COUNTRY_ALPHA, confidence.banks) %>%
@@ -75,9 +79,6 @@ comb.hist_ggplot <- comb.hist %>%
   scale_fill_discrete(name = "Countries")
 
 comb.hist_ggplot
-
-
-
 
 ```
 

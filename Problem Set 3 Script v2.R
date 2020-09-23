@@ -90,7 +90,7 @@ fig3 <- wvs %>%
   fig4
 
 # Combining US and Chile Bank histograms
-comb.hist2 <- wvs %>%
+comb.hist <- wvs %>%
   select(B_COUNTRY_ALPHA, confidence.banks) %>%
   filter(B_COUNTRY_ALPHA == c("USA", "CHL", "MEX"))
 view(comb.hist)
