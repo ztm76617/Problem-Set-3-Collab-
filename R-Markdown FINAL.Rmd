@@ -66,17 +66,26 @@ select.oecd2019.fig <- oecd.df %>%
 plot(select.oecd2019.fig)
 ```
 
-On the other side of the spectrum, the United States (U.S.) was the highest ranking country in the OECD that also responded to the aforementioned questions that were picked for this study. Additionally, the U.S. is a uniquely well situated country to serve as the foil for Chile and Mexico, given that it's economic development has historically been quite influential on *global* economic activity, i.e. the subprime mortage crisis in 2007-08 that originated in the U.S. but it nevertheless affected countries all over Europe. Subsequently, it will be interesting to observe how the economic attitudes of the two poorer countries (Chile and Mexico) compare to the U.S., with the assumption that people associate financial and economic institutions with economic outcomes and conditions. 
+On the other side of the spectrum, the United States (U.S.) was the highest ranking country in the OECD that also responded to the aforementioned questions that were picked for this study. Additionally, the U.S. is a uniquely well situated country to serve as the foil for Chile and Mexico, given that it's economic development has historically been quite influential on *global* economic activity, i.e. the subprime mortgage crisis in 2007-08 that originated in the U.S. but it nevertheless affected countries all over Europe. Subsequently, it will be interesting to observe how the economic attitudes of the two poorer countries (Chile and Mexico) compare to the U.S., with the assumption that people associate financial and economic institutions with economic outcomes and conditions. 
 
+In the World Values Survey, respondents were asked the following question and provided the subsequent answers:
+
+> 1. I am going to name a number of organizations. For each one, could you tell me how much confidence you have in them: is it a great deal of confidence, quite a lot of confidence, not very much confidence or none at all? Banks.
++ 1-A great deal
++ 2-Quite a lot
++ 3-Not very much
++ 4-None at all
+
+To make the later data plots make more intuitive sense, the numerical values assigned to the four possible responses were inverted. In other words, those who had the most confidence will be represented in subsequent histograms in the category "4" and, vice versa, those who had no confidence at all will be represented in the category "1."
 
 ## Hypotheses
 
 Our hypotheses are as follows:
 
-1) People that live in lower GDP per capita countries are *likely* to have negative attitudes towards financial and/or economic institutions.
-2) People that live in lower GDP per capita countries are *unlikely* to have positve attitudes towards financial and/or economic institutions.
-3) People that live in higher GPD per capita countries are *likely* to have positive attitudes towards financial and/or economic institutions.
-4) People that live in higher GPD per capita countries are *unlikely* to have negative attitudes towards financial and/or economic institutions.
+1) People that live in lower GDP per capita countries are *more likely* to have negative attitudes towards financial and/or economic institutions.
+2) People that live in lower GDP per capita countries are *less likely* to have positve attitudes towards financial and/or economic institutions.
+3) People that live in higher GPD per capita countries are *more likely* to have positive attitudes towards financial and/or economic institutions.
+4) People that live in higher GPD per capita countries are *less likely* to have negative attitudes towards financial and/or economic institutions.
 
 ## Results
 
@@ -111,10 +120,17 @@ comb.hist_ggplot <- comb.hist %>%
 plot(comb.hist_ggplot)
 ```
 
-If our hypotheses had been correct, Mexico should have had the least number of people with high confidence, Chile having the second least, and the U.S. having the most. Instead, the order is quite different: Mexico had the most high-confidence respondents, the U.S. had the second most, and Chile had the least. On the other hand, hypothesis 
+If our hypotheses had been correct, Mexico should have had the least number of people with high confidence, Chile having the second least, and the U.S. having the most. Instead, the order is quite different: Mexico had the most high-confidence respondents, the U.S. had the second most, and Chile had the least. On the other hand, hypothesis three and four are partially supported by how the U.S. had the overwhelming majority of its respondents fall in the middle of the confidence scale, illustrating how most Americans have a degree of confidence in banks. In contrast, the majority of respondents from Mexico had either zero or very little confidence in banks, which is consistent with hypothesis 1
+
+
+
+## Works Cited
+OECD (2020), Gross domestic product (GDP) (indicator). doi: 10.1787/dc2f7aec-en (Accessed on 23 September 2020)
 
 
 
 
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
