@@ -29,11 +29,27 @@ People’s opinions on economic institutions can vary according to the level of 
 
 ## Research Methodology
 
-For our research purposes, we decided to examine the various responses found in the World Values Survey Wave 7 (2017-2020). Originally, the goal was to compare the results from the top three and bottom three countries in the Organization for Economic Co-operation and Development (OECD) concerning GDP per capita. Unfortunately, some of the countries that ranked at or near the top of the OECD list did not record responses for the survey questions that were selected to measure economic attitudes (Luxembourg, Ireland, Norway, Switzerland). As a result, our study limits its analysis to the following three countries: Chile, Mexico, and the United States. 
+For our research purposes, we decided to examine the various responses found in the World Values Survey Wave 7 (2017-2020). Originally, our goal was to compare the results from the top three and bottom three countries in the Organization for Economic Co-operation and Development (OECD) concerning their respective GDP per capita. Unfortunately, there were no responses given to the questions that we chose to use as our measurement of economic by a number of the countries that ranked at or near the top in terms of GDP. This was a surprise to us, given that the countries in question (Luxembourg, Ireland, Norway, Switzerland) did in fact provide responses to all of the other survey questions, just not the ones examined in this study.  
 
-Cross referencing the World Values Survey data with the data gathered by the OECD, we established that Chile and Mexico were the two countries that fulfilled the needs of the study; they countries ranked near the bottom of the OECD in terms of GDP per capita and gave responses to the survey questions that were chosen to measure economic attitudes.
+```{r full gdp code, include=FALSE}
+OECD_Countires_Gross_domestic_product_GDP_ <- read_csv("data/OECD Countires Gross domestic product (GDP).csv")
+oecd.df <- OECD_Countires_Gross_domestic_product_GDP_
+full_oecd.fig2019 <- oecd.df %>% 
+  select(LOCATION, Value, TIME) %>%
+  filter(TIME == "2019") %>%
+  mutate(LOCATION = fct_reorder(LOCATION, Value)) %>%
+  ggplot + geom_bar(stat = "identity", mapping = aes(x = LOCATION, y = Value)) + ylim(0,120000) +
+  labs(title = "Gross Domestic Product (GDP) Per Capita", x = "OECD Countries", y = "USD (Thousands)") + theme_gray() 
+```
 
-On the other side of the spectrum, the United States (U.S.) was the highest ranking country in the OECD that also responded to the aforementioned questions that were picked for this paper. Additionally, the U.S. is a uniquely well situated country to serve as the foil for Chile and Mexico, due to the the U.S. having one of the largest national economies in the world (NEED CITE). Subsequently, it will be interesting to see how the two poorer countries (Chile and Mexico) compare to the U.S., with the assumption that people associate financial and economic institutions with economic outcomes and conditions (POSSIBLE CITE NEEDED).
+```{r full gdp ggplot, echo=FALSE, fig.width=15, message=FALSE, warning=FALSE}
+plot(full_oecd.fig2019)
+```
+
+
+
+As a result, our study limits the scope of its analysis to the following three OECD member-countries: Chile, Mexico, and the United States. Cross referencing the World Values Survey data with the data gathered by the OECD, we established that Chile and Mexico were the two countries that fulfilled the needs of the study; they countries ranked near the bottom of the OECD in terms of GDP per capita and gave responses to the survey questions that were chosen to measure economic attitudes.
+
 
 ```{r Select GDP code, include=FALSE}
 OECD_Countires_Gross_domestic_product_GDP_ <- read_csv("data/OECD Countires Gross domestic product (GDP).csv")
@@ -51,6 +67,7 @@ select.oecd2019.fig <- oecd.df %>%
 plot(select.oecd2019.fig)
 ```
 
+On the other side of the spectrum, the United States (U.S.) was the highest ranking country in the OECD that also responded to the aforementioned questions that were picked for this paper. Additionally, the U.S. is a uniquely well situated country to serve as the foil for Chile and Mexico, due to the the U.S. having one of the largest national economies in the world (NEED CITE). Subsequently, it will be interesting to see how the two poorer countries (Chile and Mexico) compare to the U.S., with the assumption that people associate financial and economic institutions with economic outcomes and conditions (POSSIBLE CITE NEEDED).
 
 
 ## Including Plots
