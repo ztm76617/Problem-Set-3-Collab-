@@ -1,16 +1,26 @@
 ---
-title: "Measuring the Relationship Between National Economies and Confidence in Economic Institutions"
-authors:
-  - name: Author Bruno Guimaraes Ubiali
-    address: Department of Anthropology, University of Georgia
-  - name: Zachary Thomas McDowell
-    address: Department of Political Science, University of Georgia
-    corresponding_author: yes
+title: Measuring the Relationship Between National Economies and Confidence in Economic Institutions
+author:
+  - Bruno Guimaraes Ubiali
+  - _Department of Anthropology, University of Georgia_
+  - Zachary Thomas McDowell
+  - _Department of Political Science, University of Georgia_
 output: html_document
----
 
+abstract: |
+   People’s opinions on economic institutions can vary according to the level of development of their countries of residence, which has implications for levels of investment in national and international markets. This paper aims at testing the hypothesis that people who reside in developed countries have a higher level of trust in economic institutions than people who reside in developing countries. We draw on secondary data from the World Values Survey (WVS) for the United States, Mexico, and Chile. For data analyses, we used the software R for producing graphs and statistical inferences. The results do not confirm our hypothesis; there is no homogeneous patter of response according to the level of economic development of the country. The results indicate that people in Mexico have higher confidence in banks than US and Chile inhabitants.
+
+keywords:
+  - OECD
+  - Economics
+  - Development
+  - IMF
+---   
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+library(rticles)
 ```
 
 ## R Markdown
