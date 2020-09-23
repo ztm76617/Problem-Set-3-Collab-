@@ -34,15 +34,6 @@ knitr::opts_chunk$set(out.width = '100%', dpi=300) # Figure resolution and size
 knitr::opts_chunk$set(fig.env="figure") # Latex figure environment
 ```
 
-
-
-```{r}
-library(tidyverse)
-library(knitr)
-library(ggplot2)
-library(dplyr)
-```
-
 # Introduction
 
 People’s opinions on economic institutions can vary according to the level of development of their countries of residence. This has implications for trust in economic policies, which can in turn influence levels of investment in national and international markets. Based on this, we hypothesized that people who reside in developed countries have a higher level of trust in economic institutions than people who reside in developing countries. This paper aims at testing this hypothesis, drawing on the World Values Survey (WVS), which takes a global approach to inquiry people about their cultural values as well as attitudes and perceptions regarding multilateral institutions, economy, education, health, among many others (ref). We used specifically the question of confidence at the International Monetary Fund (IMF), and institution created in the United States in the 1940s with the main objective of promoting international financial stability and economic cooperation (ref). We purposefully selected answers from three countries that reflect a range of development levels in the Americas: United States, Mexico, and Chile. 
@@ -56,24 +47,7 @@ Cross referencing the World Values Survey data with the data gathered by the OEC
 On the other side of the spectrum, the United States (U.S.) was the highest ranking country in the OECD that also responded to the aforementioned questions that were picked for this paper. Additionally, the U.S. is a uniquely well situated country to serve as the foil for Chile and Mexico, due to the the U.S. having one of the largest national economies in the world (NEED CITE). Subsequently, it will be interesting to see how the two poorer countries (Chile and Mexico) compare to the U.S., with the assumption that people associate financial and economic institutions with economic outcomes and conditions (POSSIBLE CITE NEEDED).
 
 
-```{r, echo=TRUE}
-
-load(wvs)
-
-comb.hist <- wvs %>%
-  select(B_COUNTRY_ALPHA, confidence.banks) %>%
-  filter(B_COUNTRY_ALPHA == c("USA", "CHL", "MEX"))
-
-comb.hist_ggplot <- comb.hist %>%
-  mutate(Banks = case_when(confidence.banks == 1 ~ 4, 
-                           confidence.banks == 2 ~ 3,
-                           confidence.banks == 3 ~ 2,
-                           confidence.banks == 4 ~ 1)) %>%
-  ggplot +
-  geom_bar(mapping = aes(x = Banks, fill = B_COUNTRY_ALPHA), position = 'dodge')+
-  labs(title = "Comparing Confidence in 'Banks'", x = "Confidence in Banks", y = "Frequency") +
-  scale_fill_discrete(name = "Countries")
-
+```{r}
 comb.hist_ggplot
 
 

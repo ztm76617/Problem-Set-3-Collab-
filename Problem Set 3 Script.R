@@ -1,11 +1,13 @@
 # Load Data
 load("data/World_Values_Survey_Wave_7_Sample.RData")
+view(wvs)
 names(wvs)
 
 # Install + load all packages
 library(tidyverse)
 library(ggplot2)
 library(cowplot)
+library(dplyr)
 
 <<<<<<< HEAD
 =======
@@ -52,10 +54,7 @@ fig1 <- wvs %>%
   
 fig1
 
-fig1 <- ggplot(data = united.states.df) + 
-  geom_bar(mapping = aes(x = united.states.imf)) +
-  labs(title = "United States", x = "Confidence in IMF", y = "Frequency")
-fig1
+
 
 # Chile IMF confidence
 chile.imf <- (chile.df$Q84)

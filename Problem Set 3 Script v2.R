@@ -90,9 +90,9 @@ fig3 <- wvs %>%
   fig4
 
 # Combining US and Chile Bank histograms
-comb.hist <- wvs %>%
+comb.hist2 <- wvs %>%
   select(B_COUNTRY_ALPHA, confidence.banks) %>%
-  filter(B_COUNTRY_ALPHA == c("USA", "CHL"))
+  filter(B_COUNTRY_ALPHA == c("USA", "CHL", "MEX"))
 view(comb.hist)
 
 
@@ -104,7 +104,7 @@ comb.hist_ggplot <- comb.hist %>%
                            confidence.banks == 4 ~ 1)) %>%
   ggplot +
   geom_bar(mapping = aes(x = Banks, fill = B_COUNTRY_ALPHA), position = 'dodge')+
-  labs(x = "Confidence in Banks", y = "Frequency") +
+  labs(title = "Comparing Confidence in 'Banks'", x = "Confidence in Banks", y = "Frequency") +
   scale_fill_discrete(name = "Countries")
 
 comb.hist_ggplot
