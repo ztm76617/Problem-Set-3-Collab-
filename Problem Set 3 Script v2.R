@@ -109,46 +109,34 @@ comb.hist_ggplot <- comb.hist %>%
 
 comb.hist_ggplot
 
-# Chile IMF confidence
 
-# Re-labling chile IMF variables 
+# Full OECDC ggplot
+OECD_Countires_Gross_domestic_product_GDP_ <- read_csv("data/OECD Countires Gross domestic product (GDP).csv")
+View(OECD_Countires_Gross_domestic_product_GDP_)
 
+oecd.df <- OECD_Countires_Gross_domestic_product_GDP_
 
-
-
-# Mexico IMF confidence
-
-
-# Re-labling mexico variables 
-
-
-
-
-# US confidence in banks
+full_oecd.fig2019 <- oecd.df %>% 
+  select(LOCATION, Value, TIME) %>%
+  filter(TIME == "2019") %>%
+  mutate(LOCATION = fct_reorder(LOCATION, Value)) %>%
+  ggplot + geom_bar(stat = "identity", mapping = aes(x = LOCATION, y = Value)) + ylim(0,120000) +
+  labs(title = "Gross Domestic Product (GDP) Per Capita", x = "OECD Countries", y = "USD (Thousands)") + theme_gray() 
+  
 
 
-# Renaming US bank variables
+full_oecd.fig2019
 
-# US bank ggplot
+# mexico, usa, chile gdp ggplot
 
+select_oecd.fig2019 <- oecd.df %>% 
+  select(LOCATION, Value, TIME) %>%
+  filter(TIME == "2019", LOCATION == c("USA","CHL","MEX")) %>%
+  mutate(LOCATION = fct_reorder(LOCATION, Value)) %>%
+  ggplot + geom_bar(stat = "identity", mapping = aes(x = LOCATION, y = Value)) + ylim(0,120000) + 
+  labs(title = "Gross Domestic Product (GDP) Per Capita", x = "OECD Countries", y = "USD (Thousands)") + theme_gray()
 
-# Chile confidence in banks
-
-
-# Renaming Chile bank variables
-
-
-# Chile bank ggplot
-
-
-
-
-# Mexico bank ggplot
-
-
-
-
-
+select_oecd.fig2019
 
 
 

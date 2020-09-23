@@ -25,7 +25,7 @@ library(rticles)
 
 ## Introduction
 
-People’s opinions on economic institutions can vary according to the level of development of their countries of residence. This has implications for trust in economic policies, which can in turn influence levels of investment in national and international markets. Based on this, we hypothesized that people who reside in developed countries have a higher level of trust in economic institutions than people who reside in developing countries. This paper aims at testing this hypothesis, drawing on the World Values Survey (WVS), which takes a global approach to inquiry people about their cultural values as well as attitudes and perceptions regarding multilateral institutions, economy, education, health, among many others (ref). We used specifically the question of confidence at the International Monetary Fund (IMF), and institution created in the United States in the 1940s with the main objective of promoting international financial stability and economic cooperation (ref). We purposefully selected answers from three countries that reflect a range of development levels in the Americas: United States, Mexico, and Chile.
+People’s opinions on economic institutions can vary according to the level of development of their countries of residence. This has implications for trust in economic policies, which can in turn influence levels of investment in national and international markets. Based on this, we hypothesized that people who reside in developed countries have a higher level of trust in economic institutions than people who reside in developing countries. This paper aims at testing this hypothesis, drawing on the World Values Survey (WVS), which takes a global approach to inquiry people about their cultural values as well as attitudes and perceptions regarding multilateral institutions, economy, education, health, among many others (ref). We used specifically the question of confidence in the International Monetary Fund (IMF), and institution created in the United States in the 1940s with the main objective of promoting international financial stability and economic cooperation (ref), as well as confidence in local banks. We purposefully selected answers from three countries that reflect a range of development levels in the Americas: United States, Mexico, and Chile.
 
 ## Research Methodology
 
@@ -35,9 +35,23 @@ Cross referencing the World Values Survey data with the data gathered by the OEC
 
 On the other side of the spectrum, the United States (U.S.) was the highest ranking country in the OECD that also responded to the aforementioned questions that were picked for this paper. Additionally, the U.S. is a uniquely well situated country to serve as the foil for Chile and Mexico, due to the the U.S. having one of the largest national economies in the world (NEED CITE). Subsequently, it will be interesting to see how the two poorer countries (Chile and Mexico) compare to the U.S., with the assumption that people associate financial and economic institutions with economic outcomes and conditions (POSSIBLE CITE NEEDED).
 
-```{r cars}
-summary(cars)
+```{r Select GDP code, include=FALSE}
+OECD_Countires_Gross_domestic_product_GDP_ <- read_csv("data/OECD Countires Gross domestic product (GDP).csv")
+oecd.df <- OECD_Countires_Gross_domestic_product_GDP_
+select.oecd2019.fig <- oecd.df %>%
+  select(LOCATION, TIME, Value) %>%
+  filter(LOCATION == "USA" | LOCATION == "MEX" | LOCATION == "CHL") %>%
+  filter(TIME == "2019") %>%
+  mutate(LOCATION = fct_reorder(LOCATION, Value)) %>%
+  ggplot + geom_bar(stat = "identity", mapping = aes(x = LOCATION, y = Value)) + ylim(0,120000) +
+  labs(title = "Gross Domestic Product (GDP) Per Capita", x = "OECD Countries", y = "USD (Thousands)") + theme_gray()
 ```
+
+```{r select GDP ggplot, echo=FALSE}
+plot(select.oecd2019.fig)
+```
+
+
 
 ## Including Plots
 
