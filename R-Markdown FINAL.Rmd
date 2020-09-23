@@ -76,14 +76,14 @@ Our hypotheses are as follows:
 1) People that live in lower GDP per capita countries are *likely* to have negative attitudes towards financial and/or economic institutions.
 2) People that live in lower GDP per capita countries are *unlikely* to have positve attitudes towards financial and/or economic institutions.
 3) People that live in higher GPD per capita countries are *likely* to have positive attitudes towards financial and/or economic institutions.
-4) People that live in higher GPD per capita countries are *unlikely* to have positive attitudes towards financial and/or economic institutions.
+4) People that live in higher GPD per capita countries are *unlikely* to have negative attitudes towards financial and/or economic institutions.
 
 ## Results
 
 After examining the data found in the World Values Survey, it would appear that some of the hypotheses were supported our analysis. At first glance, the first hypothesis is somewhat supported by the fact that Mexico had the most respondents say that they had absolutely zero confidence in banks, while also having the second most respondents say they had "not very much" confidence in banks. But contrary to what was expected, the U.S. had the most respondents say they had "not much very confidence" in banks and the second most who said they had "none at all." Also inconsistent with our hypotheses was the fact that Chile had the *least* number of respondents report having absolutely zero confidence in banks as well as having very little confidence. Additionally, Mexico had the greatest number of respondents report having "a great deal" of confidence in banks, which is the exact opposite of what we expected to observe. If our hypotheses had been correct, Mexico should have had the least number of people with high confidence, Chile having the second least, and the U.S. having the most. Instead, the order is quite different: Mexico had the most high-confidence respondents, the U.S. had the second most, and Chile had the least. 
 
 
-If our hypotheses were fully borne out by the results, we should have seen Mexico
+
 
 ```{r bank code, message=TRUE, warning=FALSE, include=FALSE}
 load("data/World_Values_Survey_Wave_7_Sample.RData")
@@ -110,5 +110,11 @@ comb.hist_ggplot <- comb.hist %>%
 ```{r bank ggplot, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
 plot(comb.hist_ggplot)
 ```
+
+If our hypotheses had been correct, Mexico should have had the least number of people with high confidence, Chile having the second least, and the U.S. having the most. Instead, the order is quite different: Mexico had the most high-confidence respondents, the U.S. had the second most, and Chile had the least. On the other hand, hypothesis 
+
+
+
+
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
