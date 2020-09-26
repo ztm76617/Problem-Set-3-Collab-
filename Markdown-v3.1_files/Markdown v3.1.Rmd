@@ -1,0 +1,146 @@
+---
+title: Measuring the Relationship Between National Economies and Confidence in Economic Institutions
+#date: "`r Sys.Date()`"
+authors:
+  - name: Author Bruno Guimaraes Ubiali
+    address: Department of Anthropology, University of Georgia
+  - name: Zachary Thomas McDowell
+    address: Department of Political Science, University of Georgia
+    corresponding_author: yes
+abstract: |
+   People’s opinions on economic institutions can vary according to the level of development of their countries of residence, which has implications for levels of investment in national and international markets. This paper aims at testing the hypothesis that people who reside in developed countries have a higher level of trust in economic institutions than people who reside in developing countries. We draw on secondary data from the World Values Survey (WVS) for the United States, Mexico, and Chile. For data analyses, we used the software R for producing graphs and statistical inferences. The results do not confirm our hypothesis; there is no homogeneous patter of response according to the level of economic development of the country. The results indicate that people in Mexico have higher confidence in banks than US and Chile inhabitants
+
+keywords:
+  - OECD
+  - Economics
+  - Development
+  - IMF
+#fontsize: 12pt
+#spacing: halfline # could also be oneline
+#classoptions:
+#  - endnotes
+
+output: rticles::oup_article
+#header-includes:
+#  - \usepackage[nomarkers,tablesfirst]{endfloat} # For figures and tables at end
+#  - \usepackage{lineno} # For line numbering
+#  - \linenumbers # For line numbering
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE) # By default, hide code; set to TRUE to see code
+knitr::opts_chunk$set(fig.pos = 'p') # Places figures on pages separate from text
+knitr::opts_chunk$set(out.width = '100%', dpi=300) # Figure resolution and size
+knitr::opts_chunk$set(fig.env="figure") # Latex figure environment
+```
+
+
+
+```{r}
+library(tidyverse)
+library(rticles)
+library(shiny)
+```
+
+# Introduction
+
+People’s opinions on economic institutions can vary according to the level of development of their countries of residence. This has implications for trust in economic policies, which can in turn influence levels of investment in national and international markets. Based on this, we hypothesized that people who reside in developed countries have a higher level of trust in economic institutions than people who reside in developing countries. This paper aims at testing this hypothesis, drawing on the World Values Survey (WVS), which takes a global approach to inquiry people about their cultural values as well as attitudes and perceptions regarding multilateral institutions, economy, education, health, among many others (ref). We used specifically the question of confidence at the International Monetary Fund (IMF), and institution created in the United States in the 1940s with the main objective of promoting international financial stability and economic cooperation (ref). We purposefully selected answers from three countries that reflect a range of development levels in the Americas: United States, Mexico, and Chile. 
+
+# Materials and Methods
+
+For our research purposes, we decided to examine the various responses found in the World Values Survey Wave 7 (2017-2020). Originally, the goal was to compare the results from the top three and bottom three countries in the Organization for Economic Co-operation and Development (OECD) concerning GDP per capita. Unfortunately, some of the countries that ranked at or near the top of the OECD list did not record responses for the survey questions that were selected to measure economic attitudes (Luxembourg, Ireland, Norway, Switzerland). As a result, our study limits its analysis to the following three countries: Chile, Mexico, and the United States. 
+
+Cross referencing the World Values Survey data with the data gathered by the OECD, we established that Chile and Mexico were the two countries that fulfilled the needs of the study; they countries ranked near the bottom of the OECD in terms of GDP per capita and gave responses to the survey questions that were chosen to measure economic attitudes.
+
+On the other side of the spectrum, the United States (U.S.) was the highest ranking country in the OECD that also responded to the aforementioned questions that were picked for this paper. Additionally, the U.S. is a uniquely well situated country to serve as the foil for Chile and Mexico, due to the the U.S. having one of the largest national economies in the world (NEED CITE). Subsequently, it will be interesting to see how the two poorer countries (Chile and Mexico) compare to the U.S., with the assumption that people associate financial and economic institutions with economic outcomes and conditions (POSSIBLE CITE NEEDED).
+
+
+```{r}
+
+load('data/World_Values_Survey_Wave_7_Sample.RData')
+
+# Renaming columns
+wvs <- wvs %>% rename('confidence.imf' = Q84)
+wvs <- wvs %>% rename('confidence.banks' = Q78)
+wvs <- wvs %>% rename('occ.group' = Q281)
+
+comb.hist <- wvs %>%
+  select(B_COUNTRY_ALPHA, confidence.banks) %>%
+  filter(B_COUNTRY_ALPHA == c("USA", "CHL", "MEX"))
+
+comb.hist_ggplot <- comb.hist %>%
+  mutate(Banks = case_when(confidence.banks == 1 ~ 4, 
+                           confidence.banks == 2 ~ 3,
+                           confidence.banks == 3 ~ 2,
+                           confidence.banks == 4 ~ 1)) %>%
+  ggplot +
+  geom_bar(mapping = aes(x = Banks, fill = B_COUNTRY_ALPHA), position = 'dodge')+
+  labs(title = "Comparing Confidence in 'Banks'", x = "Confidence in Banks", y = "Frequency") +
+  scale_fill_discrete(name = "Countries")
+
+comb.hist_ggplot
+
+```
+
+```fig7 <- ggplot(data = OECD.df) + 
+  geom_col(mapping = aes(x = LOCATION, y = VALUE)) +
+  labs(title = "OECD Countries GDP per capita", x = "Countries", y = "USD (Thousands)") +
+  theme_gray()
+
+An equation with a label for cross-referencing:
+
+\begin{equation}\label{eq:eq1}
+\int^{r_2}_0 F(r,\varphi){\rm d}r\,{\rm d}\varphi = [\sigma r_2/(2\mu_0)]
+\int^{\infty}_0\exp(-\lambda|z_j-z_i|)\lambda^{-1}J_1 (\lambda r_2)J_0
+(\lambda r_i\,\lambda {\rm d}\lambda)
+\end{equation}
+
+This equation can be referenced as follows: Eq. \ref{eq:eq1}
+
+## Hypotheses
+
+A numbered list:
+
+1) People that live in lower GDP per capita countries will harbor negative attitudes towards various financial and/or economic institutions.
+2) SPeople that live in higher GPD per capita countries will harbor positive attitudes towards various financial and/or economic institutions.
+
+# Results
+
+## Generate a figure.
+
+```{r OECD Countries}
+
+
+```
+
+You can reference this figure as follows: Fig. \ref{fig:fig1}.
+
+```{r fig2, fig.cap="This is the second figure.",echo=TRUE}
+plot(1:5,pch=19,main="Some data",xlab="Distance (cm)",ylab="Time (hours)")
+```
+
+Reference to second figure: Fig. \ref{fig:fig2}
+
+```
+
+You can reference this table as follows: Table \ref{tab:tab1}.
+
+## Generate a table using `kable`
+
+```{r anothertable, echo=TRUE}
+df = data.frame(ID=1:3,code=letters[1:3])
+
+# kable can alse be used for creating tables
+knitr::kable(df,caption="This is the table caption",format="latex",
+             booktabs=TRUE,label="tab2")
+```
+
+You can reference this table as follows: Table \ref{tab:tab2}.
+
+# Discussion
+
+You can cross-reference sections and subsections as follows: Section \ref{materials-and-methods} and Section \ref{a-subsection}.
+
+***Note:*** the last section in the document will be used as the section title for the bibliography.
+
+# References

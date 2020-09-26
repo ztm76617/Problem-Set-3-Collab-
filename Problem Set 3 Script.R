@@ -1,19 +1,20 @@
 # Load Data
 load("data/World_Values_Survey_Wave_7_Sample.RData")
+view(wvs)
 names(wvs)
 
 # Install + load all packages
-install.packages("tidyverse")
 library(tidyverse)
-
-install.packages("ggplot2")
 library(ggplot2)
-
-install.packages("cowplot")
 library(cowplot)
+library(dplyr)
+
+<<<<<<< HEAD
+=======
+# Hey Zach check out line 40 for an example of the sort of pipe-based code we discussed! (JO)
 
 
-
+>>>>>>> 8868e254d824b7203c89e57ad7ce901a39a22d21
 # Name Countries subsets
 united.states.df <- subset(wvs, B_COUNTRY == "840")
 chile.df <- subset(wvs, B_COUNTRY == "152")
@@ -40,10 +41,20 @@ united.states.imf[united.states.imf == 2] <- '3'
 united.states.imf[united.states.imf == 3] <- '2'
 united.states.imf[united.states.imf == 4] <- '1'
 
-fig1 <- ggplot(data = united.states.df) + 
-  geom_bar(mapping = aes(x = united.states.imf)) +
-  labs(title = "United States", x = "Confidence in IMF", y = "Frequency")
+
+fig1 <- wvs %>% 
+  filter(B_COUNTRY_ALPHA == 'USA') %>%  # keep USA
+  mutate(IMF = case_when(Q84 == 1 ~ 4, # recode Q84 as "IMF"
+                         Q84 == 2 ~ 3,
+                         Q84 == 3 ~ 2,
+                         Q84 == 4 ~ 1)) %>% 
+  ggplot +
+  geom_bar(mapping = aes(x = IMF)) +
+  labs(title = "United States", x = "Confidence in IMF", y = "Frequency")  
+  
 fig1
+
+
 
 # Chile IMF confidence
 chile.imf <- (chile.df$Q84)
@@ -132,10 +143,11 @@ OECD_GDP_per_capita_US_Chile_Mexico_ <- read_csv("data/OECD GDP per capita (US, 
 # Renaming OECD data file
 OECD.df <- OECD_GDP_per_capita_US_Chile_Mexico_
 names(OECD.df)
-
+# OECD ggplot
 fig7 <- ggplot(data = OECD.df) + 
   geom_col(mapping = aes(x = LOCATION, y = VALUE)) +
-  labs(title = "OECD Countries GDP per capita", x = "Countries", y = "USD (Thousands)")
+  labs(title = "OECD Countries GDP per capita", x = "Countries", y = "USD (Thousands)") +
+  theme_gray()
 
 fig7
 

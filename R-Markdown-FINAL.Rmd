@@ -1,0 +1,139 @@
+---
+title: Measuring the Relationship Between National Economies and Confidence in Economic
+  Institutions
+author:
+- Bruno Guimaraes Ubiali
+- _Department of Anthropology, University of Georgia_
+- Zachary Thomas McDowell
+- _Department of Political Science, University of Georgia_
+output:
+  pdf_document: default
+  html_document: default
+abstract: |
+  People’s opinions on economic institutions can vary according to the level of development of their countries of residence, which has implications for levels of investment in national and international markets. This paper aims at testing the hypothesis that people who reside in developed countries have a higher level of trust in economic institutions than people who reside in developing countries. We draw on secondary data from the World Values Survey (WVS) for the United States, Mexico, and Chile. For data analyses, we used the software R for producing graphs and statistical inferences. The results do not confirm our hypothesis; there is no homogeneous patter of response according to the level of economic development of the country. The results indicate that people in Mexico have higher confidence in banks than US and Chile inhabitants.
+keywords:
+- OECD
+- Economics
+- Development
+- IMF
+---   
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+library(rticles)
+tinytex::install_tinytex()
+```
+
+### Introduction
+
+People’s opinions on economic institutions can vary according to the level of development of their countries of residence. This has implications for trust in economic policies, which can in turn influence levels of investment in national and international markets. Based on this, we hypothesized that people who reside in developed countries have a higher level of trust in economic institutions than people who reside in developing countries. This paper aims at testing this hypothesis, drawing on the World Values Survey (WVS), which takes a global approach to inquiry people about their cultural values as well as attitudes and perceptions regarding multilateral institutions, economy, education, health, among many others (ref). We used specifically the question of confidence in the International Monetary Fund (IMF), and institution created in the United States in the 1940s with the main objective of promoting international financial stability and economic cooperation (ref), as well as confidence in local banks. We purposefully selected answers from three countries that reflect a range of development levels in the Americas: United States, Mexico, and Chile.
+
+### Research Methodology
+
+For our research purposes, we decided to examine the various responses found in the World Values Survey Wave 7 (2017-2020). Originally, our goal was to compare the results from the top three and bottom three countries in the Organization for Economic Co-operation and Development (OECD) concerning their respective GDP per capita. Unfortunately, there were no responses given to the questions that we chose to use as our measurement of economic by a number of the countries that ranked at or near the top in terms of GDP. This was a surprise to us, given that the countries in question (Luxembourg, Ireland, Norway, Switzerland) did in fact provide responses to all of the other survey questions, just not the ones examined in this study.  
+
+```{r full gdp code, include=FALSE}
+OECD_Countires_Gross_domestic_product_GDP_ <- read_csv("data/OECD Countires Gross domestic product (GDP).csv")
+oecd.df <- OECD_Countires_Gross_domestic_product_GDP_
+full_oecd.fig2019 <- oecd.df %>% 
+  select(LOCATION, Value, TIME) %>%
+  filter(TIME == "2019") %>%
+  mutate(LOCATION = fct_reorder(LOCATION, Value)) %>%
+  ggplot + geom_bar(stat = "identity", mapping = aes(x = LOCATION, y = Value)) + ylim(0,120000) +
+  labs(title = "Gross Domestic Product (GDP) Per Capita", x = "OECD Countries", y = "USD (Thousands)") + theme_gray() 
+```
+
+```{r full gdp ggplot, echo=FALSE, fig.width=15, message=FALSE, warning=FALSE}
+plot(full_oecd.fig2019)
+```
+
+
+As a result, our study limits the scope of its analysis to the following three OECD member-countries: Chile, Mexico, and the United States. Cross referencing the World Values Survey data with the data gathered by the OECD, we established that Chile and Mexico were the two countries that fulfilled the needs of the study; they countries ranked near the bottom of the OECD in terms of GDP per capita and gave responses to the survey questions that were chosen to measure economic attitudes.
+
+
+```{r Select GDP code, include=FALSE}
+OECD_Countires_Gross_domestic_product_GDP_ <- read_csv("data/OECD Countires Gross domestic product (GDP).csv")
+oecd.df <- OECD_Countires_Gross_domestic_product_GDP_
+select.oecd2019.fig <- oecd.df %>%
+  select(LOCATION, TIME, Value) %>%
+  filter(LOCATION == "USA" | LOCATION == "MEX" | LOCATION == "CHL") %>%
+  filter(TIME == "2019") %>%
+  mutate(LOCATION = fct_reorder(LOCATION, Value)) %>%
+  ggplot + geom_bar(stat = "identity", mapping = aes(x = LOCATION, y = Value)) + ylim(0,120000) +
+  labs(title = "Gross Domestic Product (GDP) Per Capita", x = "OECD Countries", y = "USD (Thousands)") + theme_gray()
+```
+
+```{r select GDP ggplot, echo=FALSE, fig.align='center'}
+plot(select.oecd2019.fig)
+```
+
+On the other side of the spectrum, the United States (U.S.) was the highest ranking country in the OECD that also responded to the aforementioned questions that were picked for this study. Additionally, the U.S. is a uniquely well situated country to serve as the foil for Chile and Mexico, given that it's economic development has historically been quite influential on *global* economic activity, i.e. the subprime mortgage crisis in 2007-08 that originated in the U.S. but it nevertheless affected countries all over Europe. Subsequently, it will be interesting to observe how the economic attitudes of the two poorer countries (Chile and Mexico) compare to the U.S., with the assumption that people associate financial and economic institutions with economic outcomes and conditions. 
+
+In the World Values Survey, respondents were asked the following question and provided the subsequent answers:
+
+> 1. I am going to name a number of organizations. For each one, could you tell me how much confidence you have in them: is it a great deal of confidence, quite a lot of confidence, not very much confidence or none at all? Banks.
++ 1-A great deal
++ 2-Quite a lot
++ 3-Not very much
++ 4-None at all
+
+To make the later data plots make more intuitive sense, the numerical values assigned to the four possible responses were inverted. In other words, those who had the most confidence will be represented in subsequent histograms in the category "4" and, vice versa, those who had no confidence at all will be represented in the category "1."
+
+### Hypotheses
+
+Our hypotheses are as follows:
+
+1) People that live in lower GDP per capita countries are *more likely* to have negative attitudes towards financial and/or economic institutions.
+2) People that live in lower GDP per capita countries are *less likely* to have positve attitudes towards financial and/or economic institutions.
+3) People that live in higher GPD per capita countries are *more likely* to have positive attitudes towards financial and/or economic institutions.
+4) People that live in higher GPD per capita countries are *less likely* to have negative attitudes towards financial and/or economic institutions.
+
+### Results
+
+After examining the data found in the World Values Survey, it would appear that some of the hypotheses were supported our analysis. At first glance, the first hypothesis is somewhat supported by the fact that Mexico had the most respondents say that they had absolutely zero confidence in banks, while also having the second most respondents say they had "not very much" confidence in banks. But contrary to what was expected, the U.S. had the most respondents say they had "not much very confidence" in banks and the second most who said they had "none at all." Also inconsistent with our hypotheses was the fact that Chile had the *least* number of respondents report having absolutely zero confidence in banks as well as having very little confidence. Additionally, Mexico had the greatest number of respondents report having "a great deal" of confidence in banks, which is the exact opposite of what we expected to observe. If our hypotheses had been correct, Mexico should have had the least number of people with high confidence, Chile having the second least, and the U.S. having the most. Instead, the order is quite different: Mexico had the most high-confidence respondents, the U.S. had the second most, and Chile had the least. 
+
+
+
+
+```{r bank code, message=TRUE, warning=FALSE, include=FALSE}
+load("data/World_Values_Survey_Wave_7_Sample.RData")
+
+wvs <- wvs %>% rename('confidence.banks' = Q78)
+
+comb.hist <- wvs %>%
+  select(B_COUNTRY_ALPHA, confidence.banks) %>%
+  filter(B_COUNTRY_ALPHA == c("USA", "CHL", "MEX"))
+
+
+comb.hist_ggplot <- comb.hist %>%
+  mutate(Banks = case_when(confidence.banks == 1 ~ 4, 
+                           confidence.banks == 2 ~ 3,
+                           confidence.banks == 3 ~ 2,
+                           confidence.banks == 4 ~ 1)) %>%
+  ggplot +
+  geom_bar(mapping = aes(x = Banks, fill = B_COUNTRY_ALPHA), position = 'dodge')+
+  labs(title = "Comparing Confidence in 'Banks'", x = "Confidence in Banks", y = "Frequency") +
+  scale_fill_discrete(name = "Countries")
+```
+
+
+```{r bank ggplot, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+plot(comb.hist_ggplot)
+```
+
+If our hypotheses had been correct, Mexico should have had the least number of people with high confidence, Chile having the second least, and the U.S. having the most. Instead, the order is quite different: Mexico had the most high-confidence respondents, the U.S. had the second most, and Chile had the least. On the other hand, hypothesis three and four are partially supported by how the U.S. had the overwhelming majority of its respondents fall in the middle of the confidence scale, illustrating how most Americans have a degree of confidence in banks. In contrast, the majority of respondents from Mexico had either zero or very little confidence in banks, which is consistent with hypothesis 1. Meanwhile, Mexico having more respondents than the U.S. with "a great deal" of confidence in banks contradicts hypotheses two *and* three.
+
+
+
+### Works Cited
+OECD (2020), Gross domestic product (GDP) (indicator). doi: 10.1787/dc2f7aec-en (Accessed on 23 September 2020)
+
+Inglehart, R., C. Haerpfer, A. Moreno, C. Welzel, K. Kizilova, J. Diez-Medrano, M. Lagos, P. Norris, E. Ponarin & B. Puranen et al. (eds.). 2020. World Values Survey: Round Six - Country-Pooled Datafile 2017-2020. Madrid: JD Systems Institute. Version:http://www.worldvaluessurvey.org/WVSDocumentationWV7.jsp. 
+
+
+
+
+
+
+
