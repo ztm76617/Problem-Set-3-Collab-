@@ -1,3 +1,13 @@
+PS4:
+
+Zach and Bruno,
+
+It knits and it looks fabulous! Awesome work.
+
+-Joe
+
+PS3:
+
 Dear Zach and Bruno,
 
 A valiant effort! It is clear you tried a bunch of things and couldn't quite get the Rmd working. But you do have an R script producing output, so I call it a win.
